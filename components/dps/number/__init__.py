@@ -14,6 +14,7 @@ from esphome.const import (
     ICON_EMPTY,
     UNIT_EMPTY,
     UNIT_VOLT,
+    UNIT_AMPERE,
 )
 
 from .. import CONF_DPS_ID, DPS_COMPONENT_SCHEMA, dps_ns
@@ -57,6 +58,7 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
         ),
         cv.Optional(CONF_CURRENT_SETTING): DPSNUMBER_SCHEMA.extend(
             {
+                cv.Optional(CONF_UNIT_OF_MEASUREMENT, default=UNIT_AMPERE): cv.string_strict,
                 cv.Optional(CONF_MIN_VALUE, default=0.0): cv.float_,
                 cv.Optional(CONF_MAX_VALUE, default=20.0): cv.float_,
             }

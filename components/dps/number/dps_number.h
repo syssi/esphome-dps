@@ -3,7 +3,6 @@
 #include "../dps.h"
 #include "esphome/core/component.h"
 #include "esphome/components/number/number.h"
-#include "esphome/core/preferences.h"
 
 namespace esphome {
 namespace dps {

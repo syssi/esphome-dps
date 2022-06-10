@@ -38,7 +38,7 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
                 ): cv.entity_category,
             }
         ).extend(cv.COMPONENT_SCHEMA),
-        cv.Optional(CONF_OUTPUT): switch.SWITCH_SCHEMA.extend(
+        cv.Optional(CONF_KEY_LOCK): switch.SWITCH_SCHEMA.extend(
             {
                 cv.GenerateID(): cv.declare_id(DpsSwitch),
                 cv.Optional(CONF_ICON, default=ICON_KEY_LOCK): switch.icon,
