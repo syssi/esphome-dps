@@ -50,13 +50,6 @@ binary_sensor:
       name: "${name} constant current mode"
 
 sensor:
-  - platform: template
-    id: powermeter
-    name: "${name} smartmeter instantaneous power example"
-    lambda: |-
-      return 100.0;
-    update_interval: 5s
-
   - platform: dps
     output_voltage:
       name: "${name} output voltage"

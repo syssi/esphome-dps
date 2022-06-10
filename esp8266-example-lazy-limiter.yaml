@@ -83,6 +83,10 @@ sensor:
   - platform: lazy_limiter
     power_demand:
       name: "${limiter_name} power demand"
+      on_value:
+        - number.set:
+            id: current_setting
+            value: !lambda "return x * 0.02f;"
 
   - platform: dps
     output_voltage:
@@ -141,4 +145,5 @@ number:
     voltage_setting:
       name: "${limiter_name} voltage setting"
     current_setting:
+      id: current_setting
       name: "${limiter_name} current setting"
