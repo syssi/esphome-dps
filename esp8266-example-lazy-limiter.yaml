@@ -1,5 +1,6 @@
 substitutions:
   name: dps
+  limiter_name: limiter
   external_components_source: github://syssi/esphome-dps@main
   tx_pin: GPIO4
   rx_pin: GPIO5
@@ -73,7 +74,7 @@ sensor:
 
   - platform: lazy_limiter
     power_demand:
-      name: "${name} power demand"
+      name: "${limiter_name} power demand"
 
   - platform: dps
     output_voltage:
@@ -96,7 +97,7 @@ sensor:
 text_sensor:
   - platform: lazy_limiter
     operation_mode:
-      name: "${name} operation mode"
+      name: "${limiter_name} operation mode"
 
   - platform: dps
     protection_status:
@@ -107,10 +108,10 @@ text_sensor:
 switch:
   - platform: lazy_limiter
     manual_mode:
-      name: "${name} manual mode"
+      name: "${limiter_name} manual mode"
       restore_mode: RESTORE_DEFAULT_OFF
     emergency_power_off:
-      name: "${name} emergency power off"
+      name: "${limiter_name} emergency power off"
       restore_mode: RESTORE_DEFAULT_OFF
 
   - platform: dps
@@ -122,14 +123,14 @@ switch:
 number:
   - platform: lazy_limiter
     manual_power_demand:
-      name: "${name} manual power demand"
+      name: "${limiter_name} manual power demand"
     max_power_demand:
-      name: "${name} max power demand"
+      name: "${limiter_name} max power demand"
       initial_value: 600
       restore_value: true
 
   - platform: dps
     voltage_setting:
-      name: "${name} voltage setting"
+      name: "${limiter_name} voltage setting"
     current_setting:
-      name: "${name} current setting"
+      name: "${limiter_name} current setting"
