@@ -3,7 +3,7 @@ import esphome.config_validation as cv
 from esphome.components import text_sensor
 from esphome.const import CONF_ICON, CONF_ID, ICON_EMPTY
 
-from . import CONF_DPS_ID, Dps
+from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
 DEPENDENCIES = ["dps"]
 
@@ -19,9 +19,8 @@ TEXT_SENSORS = [
     CONF_DEVICE_MODEL,
 ]
 
-CONFIG_SCHEMA = cv.Schema(
+CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
-        cv.GenerateID(CONF_DPS_ID): cv.use_id(Dps),
         cv.Optional(CONF_PROTECTION_STATUS): text_sensor.TEXT_SENSOR_SCHEMA.extend(
             {
                 cv.GenerateID(): cv.declare_id(text_sensor.TextSensor),

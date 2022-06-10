@@ -27,8 +27,8 @@ uart:
   baud_rate: 9600
   tx_pin: ${tx_pin}
   rx_pin: ${rx_pin}
-#  debug:
-#    direction: BOTH
+  debug:
+    direction: TX
 
 modbus:
   id: modbus0
@@ -74,3 +74,17 @@ text_sensor:
       name: "${name} protection status"
     device_model:
       name: "${name} device model"
+
+switch:
+  - platform: dps
+    output:
+      name: "${name} output"
+    key_lock:
+      name: "${name} key lock"
+
+number:
+  - platform: dps
+    voltage_setting:
+      name: "${name} voltage setting"
+    current_setting:
+      name: "${name} current setting"

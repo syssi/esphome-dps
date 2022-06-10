@@ -3,7 +3,7 @@ import esphome.config_validation as cv
 from esphome.components import modbus
 from esphome.const import CONF_ID
 
-AUTO_LOAD = ["modbus", "button", "sensor", "switch"]
+AUTO_LOAD = ["modbus", "binary_sensor", "number", "sensor", "switch", "text_sensor"]
 CODEOWNERS = ["@syssi"]
 MULTI_CONF = True
 
@@ -12,6 +12,12 @@ CONF_ENABLE_FAKE_TRAFFIC = "enable_fake_traffic"
 
 dps_ns = cg.esphome_ns.namespace("dps")
 Dps = dps_ns.class_("Dps", cg.PollingComponent, modbus.ModbusDevice)
+
+DPS_COMPONENT_SCHEMA = cv.Schema(
+    {
+        cv.GenerateID(CONF_DPS_ID): cv.use_id(Dps),
+    }
+)
 
 CONFIG_SCHEMA = (
     cv.Schema(
