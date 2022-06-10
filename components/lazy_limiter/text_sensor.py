@@ -1,6 +1,6 @@
 import esphome.codegen as cg
-from esphome.components import text_sensor
 import esphome.config_validation as cv
+from esphome.components import text_sensor
 from esphome.const import CONF_ICON, CONF_ID
 
 from . import CONF_LAZY_LIMITER_ID, LazyLimiter
@@ -19,9 +19,7 @@ TEXT_SENSORS = [
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(
-            LazyLimiter
-        ),
+        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(LazyLimiter),
         cv.Optional(CONF_OPERATION_MODE): text_sensor.TEXT_SENSOR_SCHEMA.extend(
             {
                 cv.GenerateID(): cv.declare_id(text_sensor.TextSensor),

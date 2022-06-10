@@ -1,6 +1,6 @@
 import esphome.codegen as cg
-from esphome.components import sensor
 import esphome.config_validation as cv
+from esphome.components import sensor
 from esphome.const import CONF_ID
 
 AUTO_LOAD = ["number", "sensor", "switch", "text_sensor"]
@@ -69,8 +69,7 @@ CONFIG_SCHEMA = cv.All(
                 CONF_MAX_POWER_DEMAND, default=DEFAULT_MAX_POWER_DEMAND
             ): cv.int_range(min=1, max=2000),
         }
-    )
-    .extend(cv.polling_component_schema("3s")),
+    ).extend(cv.polling_component_schema("3s")),
     validate_min_max,
 )
 

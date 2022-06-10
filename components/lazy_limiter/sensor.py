@@ -1,6 +1,6 @@
 import esphome.codegen as cg
-from esphome.components import sensor
 import esphome.config_validation as cv
+from esphome.components import sensor
 from esphome.const import DEVICE_CLASS_POWER, ICON_EMPTY, UNIT_WATT
 
 from . import CONF_LAZY_LIMITER_ID, LazyLimiter
@@ -12,9 +12,7 @@ CONF_POWER_DEMAND = "power_demand"
 # pylint: disable=too-many-function-args
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(
-            LazyLimiter
-        ),
+        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(LazyLimiter),
         cv.Optional(CONF_POWER_DEMAND): sensor.sensor_schema(
             unit_of_measurement=UNIT_WATT,
             icon=ICON_EMPTY,

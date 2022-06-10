@@ -1,6 +1,6 @@
 import esphome.codegen as cg
-from esphome.components import number
 import esphome.config_validation as cv
+from esphome.components import number
 from esphome.const import (
     CONF_ICON,
     CONF_ID,
@@ -62,9 +62,7 @@ def validate(config):
 
 CONFIG_SCHEMA = cv.Schema(
     {
-        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(
-            LazyLimiter
-        ),
+        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(LazyLimiter),
         cv.Optional(CONF_MANUAL_POWER_DEMAND): cv.All(
             number.NUMBER_SCHEMA.extend(
                 {
