@@ -86,7 +86,7 @@ sensor:
       on_value:
         - number.set:
             id: current_setting
-            value: !lambda "return x * 0.02f;"
+            value: !lambda "return x * (1.0f/50.0f);"
 
   - platform: dps
     output_voltage:
