@@ -1,5 +1,5 @@
 substitutions:
-  name: dps-tx
+  name: dps
   external_components_source: github://syssi/esphome-dps@main
   tx_pin: GPIO4
   rx_pin: GPIO5
