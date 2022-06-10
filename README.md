@@ -45,7 +45,7 @@ ESPHome component to monitor and control the RDTech Digital Control Power Supply
 
 ```
 
-The connector is a 4 Pin GH Molex Pico 1.25mm.
+The connector is a 4 Pin GH Molex Pico 1.25mm. Do not connect the ESP to the VCC pin of the DPS in any case. [This will destroy the voltage regulator of the device](https://tech.scargill.net/dps5020-diy-power-supply/#comment-60544).
 
 ## Installation
 
