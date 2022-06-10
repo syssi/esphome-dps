@@ -40,6 +40,20 @@ dps:
   modbus_id: modbus0
   update_interval: 5s
 
+lazy_limiter:
+  # The state of this sensor (instantaneous power in watt) is used as source
+  power_id: powermeter
+
+  # Optional settings
+  power_sensor_inactivity_timeout: 20s
+  power_demand_calculation: NEGATIVE_MEASUREMENTS_REQUIRED
+  min_power_demand: 0
+  max_power_demand: 900
+  # A positive buffer value (10) tries to avoid exporting power to the grid (demand - 10 watts)
+  # A negative buffer value (-10) exports power to the grid (demand + 10 watts)
+  buffer: 10
+  update_interval: 3s
+
 binary_sensor:
   - platform: dps
     output:
@@ -50,6 +64,13 @@ binary_sensor:
       name: "${name} constant current mode"
 
 sensor:
+  - platform: template
+    id: powermeter
+    name: "${name} smartmeter instantaneous power example"
+    lambda: |-
+      return 100.0;
+    update_interval: 5s
+
   - platform: dps
     output_voltage:
       name: "${name} output voltage"
