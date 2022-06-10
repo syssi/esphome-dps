@@ -12,7 +12,6 @@ from esphome.const import (
     CONF_UNIT_OF_MEASUREMENT,
     ENTITY_CATEGORY_CONFIG,
     ICON_EMPTY,
-    UNIT_EMPTY,
     UNIT_VOLT,
     UNIT_AMPERE,
 )
