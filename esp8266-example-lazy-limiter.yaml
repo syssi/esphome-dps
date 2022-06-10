@@ -72,6 +72,15 @@ sensor:
       return 100.0;
     update_interval: 5s
 
+#  - platform: homeassistant
+#    internal: true
+#    id: powermeter
+#    name: "${name} smartmeter instantaneous power"
+#    entity_id: sensor.smartmeter_instantaneous_power
+#    filters:
+#      - throttle_average: 15s
+#      - filter_out: nan
+
   - platform: lazy_limiter
     power_demand:
       name: "${limiter_name} power demand"
