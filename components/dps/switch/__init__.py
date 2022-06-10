@@ -5,6 +5,7 @@ from esphome.const import (
     CONF_ENTITY_CATEGORY,
     CONF_ICON,
     CONF_ID,
+    CONF_OUTPUT,
     ENTITY_CATEGORY_CONFIG,
 )
 
@@ -14,7 +15,7 @@ DEPENDENCIES = ["dps"]
 
 CODEOWNERS = ["@syssi"]
 
-CONF_OUTPUT = "output"
+# CONF_OUTPUT from const
 CONF_KEY_LOCK = "key_lock"
 
 ICON_OUTPUT = "mdi:power"
