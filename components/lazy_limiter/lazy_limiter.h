@@ -5,6 +5,7 @@
 #include "esphome/components/sensor/sensor.h"
 #include "esphome/components/switch/switch.h"
 #include "esphome/components/text_sensor/text_sensor.h"
+#include "esphome/core/hal.h"
 
 namespace esphome {
 namespace lazy_limiter {

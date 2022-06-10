@@ -34,7 +34,6 @@ void LazyLimiter::publish_state_(text_sensor::TextSensor *text_sensor, const std
 
 void LazyLimiter::dump_config() {
   ESP_LOGCONFIG(TAG, "LazyLimiter:");
-  ESP_LOGCONFIG(TAG, "  Address: 0x%02X", this->address_);
   LOG_SENSOR("", "Power Demand", this->power_demand_sensor_);
 }
 
@@ -71,7 +70,8 @@ void LazyLimiter::update() {
   power_demand_per_device = ceilf(power_demand / float(this->power_demand_divider_));
 
   ESP_LOGD(TAG, "Setting the limiter to %d watts per inverter (%d in total)", power_demand_per_device, power_demand);
-  this->send(power_demand_per_device);
+  // this->send(power_demand_per_device);
+  // @FIXME: Call service
   this->last_power_demand_ = power_demand;
   ESP_LOGVV(TAG, "Updating last demand to: %d", this->last_power_demand_);
 
