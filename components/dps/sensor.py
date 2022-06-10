@@ -15,7 +15,7 @@ from esphome.const import (
     UNIT_WATT,
 )
 
-from . import CONF_DPS_ID, Dps
+from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
 DEPENDENCIES = ["dps"]
 
@@ -44,9 +44,8 @@ SENSORS = [
 ]
 
 # pylint: disable=too-many-function-args
-CONFIG_SCHEMA = cv.Schema(
+CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
-        cv.GenerateID(CONF_DPS_ID): cv.use_id(Dps),
         cv.Optional(CONF_OUTPUT_VOLTAGE): sensor.sensor_schema(
             unit_of_measurement=UNIT_VOLT,
             accuracy_decimals=2,

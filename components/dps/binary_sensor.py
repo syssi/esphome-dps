@@ -3,7 +3,7 @@ import esphome.config_validation as cv
 from esphome.components import binary_sensor
 from esphome.const import CONF_ICON, CONF_ID
 
-from . import CONF_DPS_ID, Dps
+from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
 DEPENDENCIES = ["dps"]
 
@@ -23,9 +23,8 @@ BINARY_SENSORS = [
     CONF_CONSTANT_CURRENT_MODE,
 ]
 
-CONFIG_SCHEMA = cv.Schema(
+CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
-        cv.GenerateID(CONF_DPS_ID): cv.use_id(Dps),
         cv.Optional(CONF_OUTPUT): binary_sensor.BINARY_SENSOR_SCHEMA.extend(
             {
                 cv.GenerateID(): cv.declare_id(binary_sensor.BinarySensor),
