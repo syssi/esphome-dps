@@ -7,8 +7,6 @@ namespace dps {
 
 static const char *const TAG = "dps";
 
-static const uint8_t FUNCTION_READ_ALL = 0xFF;
-
 static const uint8_t PROTECTION_STATUS_SIZE = 4;
 static const char *const PROTECTION_STATUS[PROTECTION_STATUS_SIZE] = {
     "Normal",        // 0x00
