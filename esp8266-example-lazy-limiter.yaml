@@ -79,7 +79,6 @@ sensor:
 #    entity_id: sensor.smartmeter_instantaneous_power
 #    filters:
 #      - throttle_average: 15s
-#      - filter_out: nan
 
   - platform: lazy_limiter
     power_demand:
