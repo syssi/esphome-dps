@@ -37,6 +37,14 @@ void LazyLimiter::dump_config() {
   LOG_SENSOR("", "Power Demand", this->power_demand_sensor_);
 }
 
+bool LazyLimiter::inactivity_timeout_() {
+  if (this->power_sensor_inactivity_timeout_s_ == 0) {
+    return false;
+  }
+
+  return millis() - this->last_power_demand_received_ > (this->power_sensor_inactivity_timeout_s_ * 1000);
+}
+
 void LazyLimiter::update() {
   uint16_t power_demand = 0;
   uint16_t power_demand_per_device = 0;
@@ -50,14 +58,14 @@ void LazyLimiter::update() {
     }  // else default = 0
   } else {
     // Automatic mode
-    if (millis() - this->last_power_demand_received_ < (this->power_sensor_inactivity_timeout_s_ * 1000)) {
-      power_demand = (uint16_t) this->power_demand_;
-      operation_mode = "Auto";
-    } else {
+    if (this->inactivity_timeout_()) {
       power_demand = 0;
       operation_mode = "Inactivity timeout";
       ESP_LOGW(TAG, "No power sensor update received since %d seconds. Shutting down for safety reasons.",
                this->power_sensor_inactivity_timeout_s_);
+    } else {
+      power_demand = (uint16_t) this->power_demand_;
+      operation_mode = "Auto";
     }
   }
 

@@ -46,7 +46,7 @@ lazy_limiter:
   power_id: powermeter
 
   # Optional settings
-  power_sensor_inactivity_timeout: 20s
+  power_sensor_inactivity_timeout: 0s
   power_demand_calculation: NEGATIVE_MEASUREMENTS_REQUIRED
   min_power_demand: 0
   max_power_demand: 900
