@@ -18,31 +18,9 @@ void LazyLimiter::setup() {
   });
 }
 
-void LazyLimiter::publish_state_(sensor::Sensor *sensor, float value) {
-  if (sensor == nullptr)
-    return;
-
-  sensor->publish_state(value);
-}
-
-void LazyLimiter::publish_state_(text_sensor::TextSensor *text_sensor, const std::string &state) {
-  if (text_sensor == nullptr)
-    return;
-
-  text_sensor->publish_state(state);
-}
-
 void LazyLimiter::dump_config() {
   ESP_LOGCONFIG(TAG, "LazyLimiter:");
   LOG_SENSOR("", "Power Demand", this->power_demand_sensor_);
-}
-
-bool LazyLimiter::inactivity_timeout_() {
-  if (this->power_sensor_inactivity_timeout_s_ == 0) {
-    return false;
-  }
-
-  return millis() - this->last_power_demand_received_ > (this->power_sensor_inactivity_timeout_s_ * 1000);
 }
 
 void LazyLimiter::update() {
@@ -150,6 +128,28 @@ int16_t LazyLimiter::calculate_power_demand_oem_(int16_t consumption) {
 
   // 90: 0
   return 0;
+}
+
+bool LazyLimiter::inactivity_timeout_() {
+  if (this->power_sensor_inactivity_timeout_s_ == 0) {
+    return false;
+  }
+
+  return millis() - this->last_power_demand_received_ > (this->power_sensor_inactivity_timeout_s_ * 1000);
+}
+
+void LazyLimiter::publish_state_(sensor::Sensor *sensor, float value) {
+  if (sensor == nullptr)
+    return;
+
+  sensor->publish_state(value);
+}
+
+void LazyLimiter::publish_state_(text_sensor::TextSensor *text_sensor, const std::string &state) {
+  if (text_sensor == nullptr)
+    return;
+
+  text_sensor->publish_state(state);
 }
 
 }  // namespace lazy_limiter
