@@ -38,7 +38,7 @@ void LazyLimiter::dump_config() {
 }
 
 bool LazyLimiter::inactivity_timeout_() {
-  if(this->power_sensor_inactivity_timeout_s_ == 0) {
+  if (this->power_sensor_inactivity_timeout_s_ == 0) {
     return false;
   }
 
