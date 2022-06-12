@@ -25,8 +25,34 @@ void Dps::on_modbus_data(const std::vector<uint8_t> &data) {
     return;
   }
 
+  if (data.size() == 4) {
+    this->on_acknowledge_data_(data);
+    return;
+  }
+
   ESP_LOGW(TAG, "Invalid size (%zu) for DPS frame!", data.size());
   ESP_LOGW(TAG, "Payload: %s", format_hex_pretty(&data.front(), data.size()).c_str());
+}
+
+void Dps::on_acknowledge_data_(const std::vector<uint8_t> &data) {
+  auto dps_get_16bit = [&](size_t i) -> uint16_t {
+    return (uint16_t(data[i + 0]) << 8) | (uint16_t(data[i + 1]) << 0);
+  };
+
+  // Write register acknowledge
+  //
+  // -> 0x01 0x10 0x00 0x01 0x00 0x01 0x02 0x02 0xF7 0xE7 0x67
+  // <- 0x01 0x10 0x00 0x01 0x00 0x01 .... ....
+
+  uint16_t starting_address = dps_get_16bit(0);
+  uint16_t registers_written = dps_get_16bit(2);
+
+  if (registers_written == 0) {
+    ESP_LOGW(TAG, "Updating register 0x%02X failed", starting_address);
+    return;
+  }
+
+  ESP_LOGD(TAG, "Acknowledge received: %zu registers written at address 0x%02X", registers_written, starting_address);
 }
 
 void Dps::on_status_data_(const std::vector<uint8_t> &data) {

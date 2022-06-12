@@ -29,7 +29,7 @@ uart:
   tx_pin: ${tx_pin}
   rx_pin: ${rx_pin}
   debug:
-    direction: TX
+    direction: BOTH
 
 modbus:
   id: modbus0

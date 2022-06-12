@@ -97,6 +97,7 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
   bool enable_fake_traffic_;
 
   void on_status_data_(const std::vector<uint8_t> &data);
+  void on_acknowledge_data_(const std::vector<uint8_t> &data);
   void publish_state_(binary_sensor::BinarySensor *binary_sensor, const bool &state);
   void publish_state_(number::Number *number, float value);
   void publish_state_(sensor::Sensor *sensor, float value);
