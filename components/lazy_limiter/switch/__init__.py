@@ -38,7 +38,7 @@ CONFIG_SCHEMA = cv.Schema(
         cv.Optional(CONF_MANUAL_MODE): switch.SWITCH_SCHEMA.extend(
             {
                 cv.GenerateID(): cv.declare_id(LazyLimiterSwitch),
-                cv.Optional(CONF_ICON, default=ICON_MANUAL_MODE): switch.icon,
+                cv.Optional(CONF_ICON, default=ICON_MANUAL_MODE): cv.icon,
                 cv.Optional(CONF_RESTORE_MODE, default="RESTORE_DEFAULT_OFF"): cv.enum(
                     RESTORE_MODES, upper=True, space="_"
                 ),
@@ -47,7 +47,7 @@ CONFIG_SCHEMA = cv.Schema(
         cv.Optional(CONF_EMERGENCY_POWER_OFF): switch.SWITCH_SCHEMA.extend(
             {
                 cv.GenerateID(): cv.declare_id(LazyLimiterSwitch),
-                cv.Optional(CONF_ICON, default=ICON_EMERGENCY_POWER_OFF): switch.icon,
+                cv.Optional(CONF_ICON, default=ICON_EMERGENCY_POWER_OFF): cv.icon,
                 cv.Optional(CONF_RESTORE_MODE, default="RESTORE_DEFAULT_OFF"): cv.enum(
                     RESTORE_MODES, upper=True, space="_"
                 ),
