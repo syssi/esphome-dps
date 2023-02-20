@@ -12,8 +12,8 @@ from esphome.const import (
     CONF_UNIT_OF_MEASUREMENT,
     ENTITY_CATEGORY_CONFIG,
     ICON_EMPTY,
-    UNIT_VOLT,
     UNIT_AMPERE,
+    UNIT_VOLT,
 )
 
 from .. import CONF_DPS_ID, DPS_COMPONENT_SCHEMA, dps_ns
@@ -37,7 +37,7 @@ DpsNumber = dps_ns.class_("DpsNumber", number.Number, cg.Component)
 DPSNUMBER_SCHEMA = number.NUMBER_SCHEMA.extend(
     {
         cv.GenerateID(): cv.declare_id(DpsNumber),
-        cv.Optional(CONF_ICON, default=ICON_EMPTY): number.icon,
+        cv.Optional(CONF_ICON, default=ICON_EMPTY): cv.icon,
         cv.Optional(CONF_STEP, default=0.01): cv.float_,
         cv.Optional(CONF_UNIT_OF_MEASUREMENT, default=UNIT_VOLT): cv.string_strict,
         cv.Optional(CONF_MODE, default="BOX"): cv.enum(number.NUMBER_MODES, upper=True),
