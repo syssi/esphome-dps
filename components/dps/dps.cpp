@@ -138,6 +138,16 @@ void Dps::write_register(uint16_t address, uint16_t value) {
   uint8_t payload[2];
   payload[0] = value >> 8;
   payload[1] = value & 0xff;
+
+  // 0x01 0x10 0x00 0x01 0x00 0x01 0x02 0x00 0x3F 0xE7 0x91
+  // |    |    |         |         |    |         |
+  // |    |    |         |         |    |         checksum
+  // |    |    |         |         |    payload
+  // |    |    |         |         data_len_bytes
+  // |    |    |         num_of_entities
+  // |    |    address
+  // |    function
+  // addr
   this->send(FUNCTION_WRITE_MULTIPLE_REGISTERS, address, 0x0001, sizeof(payload), payload);
 }
 
