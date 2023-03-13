@@ -34,7 +34,7 @@ uart:
 modbus:
   id: modbus0
   uart_id: uart0
-  send_wait_time: 0ms
+  send_wait_time: 250ms
 
 dps:
   id: dps0
