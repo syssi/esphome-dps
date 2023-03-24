@@ -61,8 +61,6 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
     device_model_text_sensor_ = device_model_text_sensor;
   }
 
-  void set_enable_fake_traffic(bool enable_fake_traffic) { enable_fake_traffic_ = enable_fake_traffic; }
-
   void dump_config() override;
 
   void on_modbus_data(const std::vector<uint8_t> &data) override;
@@ -93,8 +91,6 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
 
   text_sensor::TextSensor *protection_status_text_sensor_;
   text_sensor::TextSensor *device_model_text_sensor_;
-
-  bool enable_fake_traffic_;
 
   void on_status_data_(const std::vector<uint8_t> &data);
   void on_acknowledge_data_(const std::vector<uint8_t> &data);
