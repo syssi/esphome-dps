@@ -3,8 +3,10 @@ import esphome.config_validation as cv
 from esphome.components import modbus
 from esphome.const import CONF_ID
 
-AUTO_LOAD = ["modbus", "binary_sensor", "number", "sensor", "switch", "text_sensor"]
 CODEOWNERS = ["@syssi"]
+
+DEPENDENCIES = ["modbus"]
+AUTO_LOAD = ["binary_sensor", "number", "sensor", "switch", "text_sensor"]
 MULTI_CONF = True
 
 CONF_DPS_ID = "dps_id"
