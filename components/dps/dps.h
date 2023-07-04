@@ -67,6 +67,9 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
   }
 
   void set_current_resolution(CurrentResolution current_resolution) { current_resolution_ = current_resolution; }
+  float current_resolution_factor() {
+    return (this->current_resolution_ == DPS_CURRENT_RESOLUTION_HIGH) ? 0.001f : 0.01f;
+  }
 
   void dump_config() override;
 
@@ -108,9 +111,6 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
   void publish_state_(sensor::Sensor *sensor, float value);
   void publish_state_(switch_::Switch *obj, const bool &state);
   void publish_state_(text_sensor::TextSensor *text_sensor, const std::string &state);
-  float current_resolution_factor() {
-    return (this->current_resolution_ == DPS_CURRENT_RESOLUTION_HIGH) ? 0.001f : 0.01f;
-  }
 };
 
 }  // namespace dps
