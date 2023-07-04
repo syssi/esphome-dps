@@ -54,7 +54,7 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
         ),
         cv.Optional(CONF_OUTPUT_CURRENT): sensor.sensor_schema(
             unit_of_measurement=UNIT_AMPERE,
-            accuracy_decimals=2,
+            accuracy_decimals=3,
             device_class=DEVICE_CLASS_CURRENT,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
@@ -78,7 +78,7 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
         ),
         cv.Optional(CONF_CURRENT_SETTING): sensor.sensor_schema(
             unit_of_measurement=UNIT_AMPERE,
-            accuracy_decimals=2,
+            accuracy_decimals=3,
             device_class=DEVICE_CLASS_CURRENT,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
