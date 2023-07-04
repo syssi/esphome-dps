@@ -12,12 +12,12 @@ ESPHome component to monitor and control the RDTech Digital Control Power Supply
 
 ## Supported devices
 
-* DPS3005 Buck, 0-30V, 0-5A, 160W (`current_resolution: LOW`)
-* DPS5005 Buck, 0-50V, 0-5A, 250W (`current_resolution: LOW`)
-* DPS8005 Buck, 0-80V, 0-5.1A, 408W (`current_resolution: LOW`)
-* DPS5015 Buck, 0-50V, 0-15A, 750W (`current_resolution: HIGH`)
-* DPS5020 Buck, 0-50V, 0-20A, 1000W (`current_resolution: HIGH`, tested by [@romeox44](https://github.com/syssi/esphome-dps/discussions/1))
-* DPH5005 Buck/Boost, 0-50V, 0-5A, 250W (`current_resolution: LOW`)
+* DPS3005 Buck, 0-30V, 0-5A, 160W (`current_resolution: HIGH`)
+* DPS5005 Buck, 0-50V, 0-5A, 250W (`current_resolution: HIGH`)
+* DPS8005 Buck, 0-80V, 0-5.1A, 408W (`current_resolution: HIGH`)
+* DPS5015 Buck, 0-50V, 0-15A, 750W (`current_resolution: LOW`)
+* DPS5020 Buck, 0-50V, 0-20A, 1000W (`current_resolution: LOW`, tested by [@romeox44](https://github.com/syssi/esphome-dps/discussions/1))
+* DPH5005 Buck/Boost, 0-50V, 0-5A, 250W (`current_resolution: HIGH`)
 
 ## Requirements
 
