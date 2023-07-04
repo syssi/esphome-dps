@@ -11,6 +11,11 @@
 namespace esphome {
 namespace dps {
 
+enum CurrentResolution {
+  DPS_CURRENT_RESOLUTION_LOW,
+  DPS_CURRENT_RESOLUTION_HIGH,
+};
+
 class Dps : public PollingComponent, public modbus::ModbusDevice {
  public:
   void set_output_binary_sensor(binary_sensor::BinarySensor *output_binary_sensor) {
@@ -61,6 +66,11 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
     device_model_text_sensor_ = device_model_text_sensor;
   }
 
+  void set_current_resolution(CurrentResolution current_resolution) { current_resolution_ = current_resolution; }
+  float current_resolution_factor() {
+    return (this->current_resolution_ == DPS_CURRENT_RESOLUTION_HIGH) ? 0.001f : 0.01f;
+  }
+
   void dump_config() override;
 
   void on_modbus_data(const std::vector<uint8_t> &data) override;
@@ -70,6 +80,8 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
   void write_register(uint16_t address, uint16_t value);
 
  protected:
+  CurrentResolution current_resolution_{DPS_CURRENT_RESOLUTION_LOW};
+
   binary_sensor::BinarySensor *output_binary_sensor_;
   binary_sensor::BinarySensor *key_lock_binary_sensor_;
   binary_sensor::BinarySensor *constant_current_mode_binary_sensor_;
