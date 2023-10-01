@@ -121,8 +121,6 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
     case 3005:
     case 5005:
     case 8005:
-    case 3005:
-    case 5005:
       this->set_current_resolution(DPS_CURRENT_RESOLUTION_HIGH);
       this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(modelNum));
     case 5205:
