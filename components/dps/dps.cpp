@@ -112,9 +112,30 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
   //  20    0x00 0x00        Backlight brightness level       0...5
   this->publish_state_(this->backlight_brightness_sensor_, dps_get_16bit(20) * 20.0f);
   //  22    0x13 0x9C        Product model                    5020 = DPS5020
-  this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(dps_get_16bit(22)));
+  uint16_t modelNum = dps_get_16bit(22);
   //  24    0x00 0x11        Firmware version                 17 * 0.1 = 1.7
   this->publish_state_(this->firmware_version_sensor_, dps_get_16bit(24) * 0.1f);
+
+  // Set Model Name & current resolution based on reported model
+  switch ( modelNum ) {
+    case 3005:
+    case 5005:
+    case 8005:
+    case 3005:
+    case 5005:
+      this->set_current_resolution(DPS_CURRENT_RESOLUTION_HIGH);
+      this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(modelNum));
+    case 5205:
+      this->set_current_resolution(DPS_CURRENT_RESOLUTION_HIGH);
+      this->publish_state_(this->device_model_text_sensor_, "DPH" + to_string(modelNum-200));
+      break;
+    break;
+    case 5015:
+    case 5020:
+    default:
+      this->set_current_resolution(DPS_CURRENT_RESOLUTION_LOW);
+    break;
+  }
 }
 
 void Dps::update() {
