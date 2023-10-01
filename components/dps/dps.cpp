@@ -118,22 +118,22 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
 
   // Set Model Name & current resolution based on reported model
   switch ( modelNum ) {
-    case 3005:
-    case 5005:
-    case 8005:
-      this->set_current_resolution(DPS_CURRENT_RESOLUTION_HIGH);
+    case 5015:
+    case 5020:
+      this->set_current_resolution(DPS_CURRENT_RESOLUTION_LOW);
       this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(modelNum));
+      break;
     case 5205:
       this->set_current_resolution(DPS_CURRENT_RESOLUTION_HIGH);
       this->publish_state_(this->device_model_text_sensor_, "DPH" + to_string(modelNum-200));
       break;
-    break;
-    case 5015:
-    case 5020:
+    case 3005:
+    case 5005:
+    case 8005:
     default:
-      this->set_current_resolution(DPS_CURRENT_RESOLUTION_LOW);
+      this->set_current_resolution(DPS_CURRENT_RESOLUTION_HIGH);
       this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(modelNum));
-    break;
+      break;
   }
 }
 
