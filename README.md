@@ -17,7 +17,7 @@ ESPHome component to monitor and control the RDTech Digital Control Power Supply
 * DPS8005 Buck, 0-80V, 0-5.1A, 408W (`current_resolution: HIGH`)
 * DPS5015 Buck, 0-50V, 0-15A, 750W (`current_resolution: LOW`)
 * DPS5020 Buck, 0-50V, 0-20A, 1000W (`current_resolution: LOW`, tested by [@romeox44](https://github.com/syssi/esphome-dps/discussions/1))
-* DPH5005 Buck/Boost, 0-50V, 0-5A, 250W (`current_resolution: HIGH`)
+* DPH5005 Buck/Boost, 0-50V, 0-5A, 250W (`current_resolution: HIGH`), reported as model 5205
 
 ## Requirements
 
@@ -43,7 +43,9 @@ ESPHome component to monitor and control the RDTech Digital Control Power Supply
 │            o VCC                       │
 └─[oooooooo]─────────────────[oooooooo]──┘
 
+
 ```
+![DSP3005_Serial_connector_pinout](https://github.com/antfurn/esphome-dps/assets/4171512/7abda13f-7b73-4d51-a400-2547181fcc91)
 
 The connector is a 4 Pin GH Molex Pico 1.25mm. Do not connect the ESP to the VCC pin of the DPS in any case. [This will destroy the voltage regulator of the device](https://tech.scargill.net/dps5020-diy-power-supply/#comment-60544).
 
