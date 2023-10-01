@@ -132,6 +132,7 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
     case 5020:
     default:
       this->set_current_resolution(DPS_CURRENT_RESOLUTION_LOW);
+      this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(modelNum));
     break;
   }
 }
