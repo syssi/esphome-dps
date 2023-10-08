@@ -66,11 +66,9 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
   void set_device_model_text_sensor(text_sensor::TextSensor *device_model_text_sensor) {
     device_model_text_sensor_ = device_model_text_sensor;
   }
-  void set_current_resolution(CurrentResolution current_resolution) {
-    current_resolution_ = current_resolution;
-  }
+  void set_current_resolution(CurrentResolution current_resolution) { current_resolution_ = current_resolution; }
   void set_current_resolution_if_auto(CurrentResolution current_resolution) {
-    if(this->current_resolution_ == DPS_CURRENT_RESOLUTION_AUTO) {
+    if (this->current_resolution_ == DPS_CURRENT_RESOLUTION_AUTO) {
       this->set_current_resolution(current_resolution);
     }
   }
