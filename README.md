@@ -45,7 +45,8 @@ ESPHome component to monitor and control the RDTech Digital Control Power Supply
 
 
 ```
-![DSP3005_Serial_connector_pinout](https://github.com/antfurn/esphome-dps/assets/4171512/7abda13f-7b73-4d51-a400-2547181fcc91)
+
+![DPS3005 connector pinout](images/dps3005-pinout.jpg "DPS3005 connector pinout")
 
 The connector is a 4 Pin GH Molex Pico 1.25mm. Do not connect the ESP to the VCC pin of the DPS in any case. [This will destroy the voltage regulator of the device](https://tech.scargill.net/dps5020-diy-power-supply/#comment-60544).
 
