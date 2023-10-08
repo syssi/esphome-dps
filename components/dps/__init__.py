@@ -17,6 +17,7 @@ Dps = dps_ns.class_("Dps", cg.PollingComponent, modbus.ModbusDevice)
 
 CurrentResolution = dps_ns.enum("CurrentResolution")
 CURRENT_RESOLUTION_OPTIONS = {
+    "AUTO": CurrentResolution.DPS_CURRENT_RESOLUTION_AUTO,
     "LOW": CurrentResolution.DPS_CURRENT_RESOLUTION_LOW,
     "HIGH": CurrentResolution.DPS_CURRENT_RESOLUTION_HIGH,
 }
@@ -31,7 +32,7 @@ CONFIG_SCHEMA = (
     cv.Schema(
         {
             cv.GenerateID(): cv.declare_id(Dps),
-            cv.Optional(CONF_CURRENT_RESOLUTION, default="LOW"): cv.enum(
+            cv.Optional(CONF_CURRENT_RESOLUTION, default="AUTO"): cv.enum(
                 CURRENT_RESOLUTION_OPTIONS, upper=True
             ),
         }
