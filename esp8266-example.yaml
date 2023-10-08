@@ -53,7 +53,7 @@ dps:
   id: dps0
   modbus_id: modbus0
   update_interval: 5s
-  current_resolution: LOW
+  current_resolution: AUTO
 
 binary_sensor:
   - platform: dps
