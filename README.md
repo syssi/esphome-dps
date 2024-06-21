@@ -21,7 +21,7 @@ ESPHome component to monitor and control the RDTech Digital Control Power Supply
 
 ## Requirements
 
-* [ESPHome 2023.7.0 or higher](https://github.com/esphome/esphome/releases).
+* [ESPHome 2024.6.0 or higher](https://github.com/esphome/esphome/releases).
 * Generic ESP32 or ESP8266 board
 
 ## Schematics
