@@ -105,11 +105,28 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
   this->publish_state_(this->current_setting_sensor_, current_setting);
   this->publish_state_(this->current_setting_number_, current_setting);
   //   4    0x0E 0x0E        Output voltage display value     3598 * 0.01 = 35.98V          0.01 V
-  this->publish_state_(this->output_voltage_sensor_, (float) dps_get_16bit(4) * 0.01f);
+  float voltage = (float) dps_get_16bit(4) * 0.01f;
+  this->publish_state_(this->output_voltage_sensor_, voltage);
   //   6    0x00 0xED        Output current display value     0237 * 0.01 = 2.37A           0.01 A
-  this->publish_state_(this->output_current_sensor_, (float) dps_get_16bit(6) * this->current_resolution_factor());
+  float current = (float) dps_get_16bit(6) * this->current_resolution_factor();
+  this->publish_state_(this->output_current_sensor_, current);
+
   //   8    0x21 0x4F        Output power display value       8527 * 0.01 = 85.27W          0.01 W
-  this->publish_state_(this->output_power_sensor_, (float) dps_get_16bit(8) * 0.01f);
+  //
+  // <<< 01:03:1A:12:5C:06:40:11:D5:06:07:13:25:14:A5:00:00:00:00:00:01:00:01:00:00:13:9C:00:11:51:A2
+  // 'dps firmware version': Sending state 1.70000  with 1 decimals of accuracy
+  // 'dps output voltage': Sending state 45.65000 V with 2 decimals of accuracy
+  // 'dps output current': Sending state 15.43000 A with 3 decimals of accuracy
+  // 'dps output power': Sending state 49.01000 W with 2 decimals of accuracy
+  //
+  // It looks like there is a bug in firmware version 1.7 if the power measurement is large
+  // Expected value: 45.65V * 15.43A = 704.3795W
+  // Received value: 0x1325 = 4901 * 0.01 = 49.01W
+  // We therefore calculate the measurement instead of using the power value of the response
+  //
+  // this->publish_state_(this->output_power_sensor_, (float) dps_get_16bit(8) * 0.01f);
+  this->publish_state_(this->output_power_sensor_, voltage * current);
+
   //  10    0x10 0x87        Input voltage display value      4231 * 0.01 = 42.31V          0.01 V
   this->publish_state_(this->input_voltage_sensor_, (float) dps_get_16bit(10) * 0.01f);
   //  12    0x00 0x00        Key lock                         0x00: off, 0x01: on
