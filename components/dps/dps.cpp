@@ -100,13 +100,16 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
   float voltage_setting = dps_get_16bit(0) * 0.01f;
   this->publish_state_(this->voltage_setting_sensor_, voltage_setting);
   this->publish_state_(this->voltage_setting_number_, voltage_setting);
+
   //   2    0x03 0xE8        Current setting                  1000 * 0.01 = 10.00A          0.01 A
-  float current_setting = dps_get_16bit(2) * this->current_resolution_factor();
+  float current_setting = (float) dps_get_16bit(2) * this->current_resolution_factor();
   this->publish_state_(this->current_setting_sensor_, current_setting);
   this->publish_state_(this->current_setting_number_, current_setting);
+
   //   4    0x0E 0x0E        Output voltage display value     3598 * 0.01 = 35.98V          0.01 V
   float voltage = (float) dps_get_16bit(4) * 0.01f;
   this->publish_state_(this->output_voltage_sensor_, voltage);
+
   //   6    0x00 0xED        Output current display value     0237 * 0.01 = 2.37A           0.01 A
   float current = (float) dps_get_16bit(6) * this->current_resolution_factor();
   this->publish_state_(this->output_current_sensor_, current);
@@ -129,10 +132,12 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
 
   //  10    0x10 0x87        Input voltage display value      4231 * 0.01 = 42.31V          0.01 V
   this->publish_state_(this->input_voltage_sensor_, (float) dps_get_16bit(10) * 0.01f);
+
   //  12    0x00 0x00        Key lock                         0x00: off, 0x01: on
   bool key_lock = dps_get_16bit(12) == 0x0001;
   this->publish_state_(this->key_lock_binary_sensor_, key_lock);
   this->publish_state_(this->key_lock_switch_, key_lock);
+
   //  14    0x00 0x00        Protection status                0x00: normal, 0x01: over-voltage,
   //                                                          0x02: over-current, 0x03: over-power
   uint16_t raw_protection_status = data[14];
@@ -141,14 +146,18 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
   } else {
     this->publish_state_(this->protection_status_text_sensor_, "Unknown");
   }
+
   //  16    0x00 0x00        Constant current (CC mode)       0x00: CV mode, 0x01: CC mode
   this->publish_state_(this->constant_current_mode_binary_sensor_, dps_get_16bit(16) == 0x0001);
+
   //  18    0x00 0x01        Switch output state              0x00: off, 0x01: on
   bool output = dps_get_16bit(18) == 0x0001;
   this->publish_state_(this->output_binary_sensor_, output);
   this->publish_state_(this->output_switch_, output);
+
   //  20    0x00 0x00        Backlight brightness level       0...5
   this->publish_state_(this->backlight_brightness_sensor_, dps_get_16bit(20) * 20.0f);
+
   //  22    0x13 0x9C        Product model                    5020 = DPS5020
   //  24    0x00 0x11        Firmware version                 17 * 0.1 = 1.7
   this->publish_state_(this->firmware_version_sensor_, dps_get_16bit(24) * 0.1f);
