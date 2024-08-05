@@ -163,7 +163,7 @@ void Dps::write_register(uint16_t address, uint16_t value) {
   // |    |    address
   // |    function
   // addr
-  this->send(FUNCTION_WRITE_SINGLE_REGISTER, address, 0x0001, sizeof(payload), payload);
+  this->send(FUNCTION_WRITE_MULTIPLE_REGISTERS, address, 0x0001, sizeof(payload), payload);
 }
 
 void Dps::publish_state_(binary_sensor::BinarySensor *binary_sensor, const bool &state) {
