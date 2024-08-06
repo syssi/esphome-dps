@@ -1,6 +1,6 @@
 import esphome.codegen as cg
-import esphome.config_validation as cv
 from esphome.components import sensor
+import esphome.config_validation as cv
 from esphome.const import DEVICE_CLASS_POWER, ICON_EMPTY, UNIT_WATT
 
 from . import CONF_LAZY_LIMITER_ID, LazyLimiter
