@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import binary_sensor
 import esphome.config_validation as cv
-from esphome.const import CONF_ICON, CONF_ID, CONF_OUTPUT
+from esphome.const import CONF_ID, CONF_OUTPUT
 
 from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
@@ -13,10 +13,6 @@ CODEOWNERS = ["@syssi"]
 CONF_KEY_LOCK = "key_lock"
 CONF_CONSTANT_CURRENT_MODE = "constant_current_mode"
 
-ICON_OUTPUT = "mdi:power"
-ICON_KEY_LOCK = "mdi:play-box-lock-outline"
-ICON_CONSTANT_CURRENT_MODE = "mdi:current-dc"
-
 BINARY_SENSORS = [
     CONF_OUTPUT,
     CONF_KEY_LOCK,
@@ -25,25 +21,12 @@ BINARY_SENSORS = [
 
 CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
-        cv.Optional(CONF_OUTPUT): binary_sensor.BINARY_SENSOR_SCHEMA.extend(
-            {
-                cv.GenerateID(): cv.declare_id(binary_sensor.BinarySensor),
-                cv.Optional(CONF_ICON, default=ICON_OUTPUT): cv.icon,
-            }
+        cv.Optional(CONF_OUTPUT): binary_sensor.binary_sensor_schema(icon="mdi:power"),
+        cv.Optional(CONF_KEY_LOCK): binary_sensor.binary_sensor_schema(
+            icon="mdi:play-box-lock-outline"
         ),
-        cv.Optional(CONF_KEY_LOCK): binary_sensor.BINARY_SENSOR_SCHEMA.extend(
-            {
-                cv.GenerateID(): cv.declare_id(binary_sensor.BinarySensor),
-                cv.Optional(CONF_ICON, default=ICON_KEY_LOCK): cv.icon,
-            }
-        ),
-        cv.Optional(
-            CONF_CONSTANT_CURRENT_MODE
-        ): binary_sensor.BINARY_SENSOR_SCHEMA.extend(
-            {
-                cv.GenerateID(): cv.declare_id(binary_sensor.BinarySensor),
-                cv.Optional(CONF_ICON, default=ICON_CONSTANT_CURRENT_MODE): cv.icon,
-            }
+        cv.Optional(CONF_CONSTANT_CURRENT_MODE): binary_sensor.binary_sensor_schema(
+            icon="mdi:current-dc"
         ),
     }
 )
