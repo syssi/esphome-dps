@@ -34,7 +34,7 @@ void LazyLimiterSwitch::setup() {
 }
 void LazyLimiterSwitch::dump_config() {
   LOG_SWITCH("", "LazyLimiter Switch", this);
-  const LogString *restore_mode = LOG_STR("");
+  const LogString *restore_mode;
   switch (this->restore_mode_) {
     case LAZY_LIMITER_SWITCH_RESTORE_DEFAULT_OFF:
       restore_mode = LOG_STR("Restore (Defaults to OFF)");
