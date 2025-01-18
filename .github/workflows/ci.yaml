@@ -190,9 +190,15 @@ jobs:
       - name: Write secrets.yaml
         shell: bash
         run: 'echo -e "wifi_ssid: ssid\nwifi_password: password\nmqtt_host: host\nmqtt_username: username\nmqtt_password: password" > secrets.yaml'
+      - name: Write tests/secrets.yaml
+        shell: bash
+        run: 'echo -e "wifi_ssid: ssid\nwifi_password: password\nmqtt_host: host\nmqtt_username: username\nmqtt_password: password" > tests/secrets.yaml'
       - run: |
           for YAML in esp*.yaml; do
             esphome -s external_components_source components config $YAML >/dev/null
+          done
+          for YAML in tests/esp*.yaml; do
+            esphome -s external_components_source ../components config $YAML >/dev/null
           done
 
   esphome-compile:
@@ -238,3 +244,9 @@ jobs:
           esphome -s external_components_source components compile esp8266-example-faker.yaml
           esphome -s external_components_source components compile esp8266-example-lazy-limiter.yaml
           esphome -s external_components_source components compile esp8266-fake-dps.yaml
+      - name: Write tests/secrets.yaml
+        shell: bash
+        run: 'echo -e "wifi_ssid: ssid\nwifi_password: password\nmqtt_host: host\nmqtt_username: username\nmqtt_password: password" > tests/secrets.yaml'
+      - name: Compile some test configurations
+        run: |
+          esphome -s external_components_source ../components compile tests/esp32c6-compatibility-test.yaml
