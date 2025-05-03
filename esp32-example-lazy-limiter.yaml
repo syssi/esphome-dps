@@ -1,25 +1,21 @@
 substitutions:
-  name: esp32c6-compatibility-test
+  name: dps
   limiter_name: limiter
-  device_description: "Verify the project builds from source on ESP32C6"
+  device_description: "Monitor and control a RDTech Digital Control Power Supply (DPS) via UART-TTL"
   external_components_source: github://syssi/esphome-dps@main
+  tx_pin: GPIO16
+  rx_pin: GPIO17
 
 esphome:
   name: ${name}
   comment: ${device_description}
   min_version: 2024.6.0
-  platformio_options:
-    board_build.flash_size: 8MB
+  project:
+    name: "syssi.esphome-dps"
+    version: 1.2.0
 
 esp32:
-  board: esp32-c6-devkitc-1
-  variant: esp32c6
-  framework:
-    type: esp-idf
-    version: 5.3.1
-    platform_version: 6.9.0
-    sdkconfig_options:
-      CONFIG_ESPTOOLPY_FLASHSIZE_8MB: y
+  board: wemos_d1_mini32
 
 external_components:
   - source: ${external_components_source}
@@ -33,16 +29,25 @@ ota:
   platform: esphome
 
 logger:
-  level: VERY_VERBOSE
+  level: DEBUG
 
-api:
-  reboot_timeout: 0s
+# If you use Home Assistant please remove this `mqtt` section and uncomment the `api` component!
+# The native API has many advantages over MQTT: https://esphome.io/components/api.html#advantages-over-mqtt
+mqtt:
+  broker: !secret mqtt_host
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  id: mqtt_client
+
+# api:
 
 uart:
   id: uart_0
   baud_rate: 9600
-  tx_pin: GPIO16
-  rx_pin: GPIO17
+  tx_pin: ${tx_pin}
+  rx_pin: ${rx_pin}
+  debug:
+    direction: BOTH
 
 modbus:
   id: modbus0
@@ -53,7 +58,6 @@ dps:
   id: dps0
   modbus_id: modbus0
   update_interval: 5s
-  current_resolution: AUTO
 
 lazy_limiter:
   # The state of this sensor (instantaneous power in watt) is used as source
@@ -86,6 +90,14 @@ sensor:
     lambda: |-
       return 100.0;
     update_interval: 5s
+
+#  - platform: homeassistant
+#    internal: true
+#    id: powermeter
+#    name: "${name} smartmeter instantaneous power"
+#    entity_id: sensor.smartmeter_instantaneous_power
+#    filters:
+#      - throttle_average: 15s
 
   - platform: lazy_limiter
     power_demand:
