@@ -1,13 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import switch
 import esphome.config_validation as cv
-from esphome.const import (
-    CONF_ENTITY_CATEGORY,
-    CONF_ICON,
-    CONF_ID,
-    CONF_OUTPUT,
-    ENTITY_CATEGORY_CONFIG,
-)
+from esphome.const import CONF_ID, CONF_OUTPUT, ENTITY_CATEGORY_CONFIG
 
 from .. import CONF_DPS_ID, DPS_COMPONENT_SCHEMA, dps_ns
 
@@ -30,23 +24,11 @@ DpsSwitch = dps_ns.class_("DpsSwitch", switch.Switch, cg.Component)
 
 CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
-        cv.Optional(CONF_OUTPUT): switch.SWITCH_SCHEMA.extend(
-            {
-                cv.GenerateID(): cv.declare_id(DpsSwitch),
-                cv.Optional(CONF_ICON, default=ICON_OUTPUT): cv.icon,
-                cv.Optional(
-                    CONF_ENTITY_CATEGORY, default=ENTITY_CATEGORY_CONFIG
-                ): cv.entity_category,
-            }
+        cv.Optional(CONF_OUTPUT): switch.switch_schema(
+            DpsSwitch, icon=ICON_OUTPUT, entity_category=ENTITY_CATEGORY_CONFIG
         ).extend(cv.COMPONENT_SCHEMA),
-        cv.Optional(CONF_KEY_LOCK): switch.SWITCH_SCHEMA.extend(
-            {
-                cv.GenerateID(): cv.declare_id(DpsSwitch),
-                cv.Optional(CONF_ICON, default=ICON_KEY_LOCK): cv.icon,
-                cv.Optional(
-                    CONF_ENTITY_CATEGORY, default=ENTITY_CATEGORY_CONFIG
-                ): cv.entity_category,
-            }
+        cv.Optional(CONF_KEY_LOCK): switch.switch_schema(
+            DpsSwitch, icon=ICON_KEY_LOCK, entity_category=ENTITY_CATEGORY_CONFIG
         ).extend(cv.COMPONENT_SCHEMA),
     }
 )
