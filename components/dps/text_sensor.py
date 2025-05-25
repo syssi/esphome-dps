@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import text_sensor
 import esphome.config_validation as cv
-from esphome.const import CONF_ICON, CONF_ID, ICON_EMPTY
+from esphome.const import CONF_ID, ICON_EMPTY
 
 from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
@@ -21,17 +21,11 @@ TEXT_SENSORS = [
 
 CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
-        cv.Optional(CONF_PROTECTION_STATUS): text_sensor.TEXT_SENSOR_SCHEMA.extend(
-            {
-                cv.GenerateID(): cv.declare_id(text_sensor.TextSensor),
-                cv.Optional(CONF_ICON, default=ICON_PROTECTION_STATUS): cv.icon,
-            }
+        cv.Optional(CONF_PROTECTION_STATUS): text_sensor.text_sensor_schema(
+            text_sensor.TextSensor, icon=ICON_PROTECTION_STATUS
         ),
-        cv.Optional(CONF_DEVICE_MODEL): text_sensor.TEXT_SENSOR_SCHEMA.extend(
-            {
-                cv.GenerateID(): cv.declare_id(text_sensor.TextSensor),
-                cv.Optional(CONF_ICON, default=ICON_EMPTY): cv.icon,
-            }
+        cv.Optional(CONF_DEVICE_MODEL): text_sensor.text_sensor_schema(
+            text_sensor.TextSensor, icon=ICON_EMPTY
         ),
     }
 )
