@@ -35,6 +35,13 @@ POWER_DEMAND_CALCULATION_OPTIONS = {
 }
 
 
+LAZY_LIMITER_COMPONENT_SCHEMA = cv.Schema(
+    {
+        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(LazyLimiter),
+    }
+)
+
+
 def validate_min_max(config):
     max_power_demand = cv.int_(config[CONF_MAX_POWER_DEMAND])
     min_power_demand = cv.int_(config[CONF_MIN_POWER_DEMAND])
