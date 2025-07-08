@@ -3,7 +3,7 @@ from esphome.components import switch
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_RESTORE_MODE
 
-from .. import CONF_LAZY_LIMITER_ID, LazyLimiter, lazy_limiter_ns
+from .. import CONF_LAZY_LIMITER_ID, LAZY_LIMITER_COMPONENT_SCHEMA, lazy_limiter_ns
 
 DEPENDENCIES = ["lazy_limiter"]
 
@@ -32,9 +32,8 @@ RESTORE_MODES = {
     "ALWAYS_ON": LazyLimiterSwitchRestoreMode.LAZY_LIMITER_SWITCH_ALWAYS_ON,
 }
 
-CONFIG_SCHEMA = cv.Schema(
+CONFIG_SCHEMA = LAZY_LIMITER_COMPONENT_SCHEMA.extend(
     {
-        cv.GenerateID(CONF_LAZY_LIMITER_ID): cv.use_id(LazyLimiter),
         cv.Optional(CONF_MANUAL_MODE): switch.switch_schema(
             LazyLimiterSwitch,
             icon=ICON_MANUAL_MODE,
