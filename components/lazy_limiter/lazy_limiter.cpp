@@ -21,6 +21,7 @@ void LazyLimiter::setup() {
 void LazyLimiter::dump_config() {
   ESP_LOGCONFIG(TAG, "LazyLimiter:");
   LOG_SENSOR("", "Power Demand", this->power_demand_sensor_);
+  LOG_TEXT_SENSOR("", "Operation Mode", this->operation_mode_text_sensor_);
 }
 
 void LazyLimiter::update() {
@@ -61,7 +62,7 @@ void LazyLimiter::update() {
   this->last_power_demand_ = power_demand;
   ESP_LOGVV(TAG, "Updating last demand to: %d", this->last_power_demand_);
 
-  this->publish_state_(power_demand_sensor_, power_demand);
+  this->publish_state_(this->power_demand_sensor_, power_demand);
   this->publish_state_(this->operation_mode_text_sensor_, operation_mode);
 }
 
