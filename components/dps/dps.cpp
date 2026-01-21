@@ -31,7 +31,7 @@ void Dps::on_modbus_data(const std::vector<uint8_t> &data) {
   }
 
   ESP_LOGW(TAG, "Invalid size (%zu) for DPS frame!", data.size());
-  ESP_LOGW(TAG, "Payload: %s", format_hex_pretty(&data.front(), data.size()).c_str());
+  ESP_LOGW(TAG, "Payload: %s", format_hex_pretty(&data.front(), data.size()).c_str());  // NOLINT
 }
 
 void Dps::on_acknowledge_data_(const std::vector<uint8_t> &data) {
