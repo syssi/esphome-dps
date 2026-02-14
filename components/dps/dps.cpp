@@ -64,22 +64,26 @@ void Dps::on_status_data_(const std::vector<uint8_t> &data) {
 
   // Set device model & current resolution based on reported model
   uint16_t model_number = dps_get_16bit(22);
+  char model_buf[10];
   switch (model_number) {
     case 5015:
     case 5020:
       this->set_current_resolution_if_auto(DPS_CURRENT_RESOLUTION_LOW);
-      this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(model_number));
+      snprintf(model_buf, sizeof(model_buf), "DPS%u", model_number);
+      this->publish_state_(this->device_model_text_sensor_, model_buf);
       break;
     case 5205:
       this->set_current_resolution_if_auto(DPS_CURRENT_RESOLUTION_HIGH);
-      this->publish_state_(this->device_model_text_sensor_, "DPH" + to_string(model_number - 200));
+      snprintf(model_buf, sizeof(model_buf), "DPH%u", model_number - 200);
+      this->publish_state_(this->device_model_text_sensor_, model_buf);
       break;
     case 3005:
     case 5005:
     case 8005:
     default:
       this->set_current_resolution_if_auto(DPS_CURRENT_RESOLUTION_HIGH);
-      this->publish_state_(this->device_model_text_sensor_, "DPS" + to_string(model_number));
+      snprintf(model_buf, sizeof(model_buf), "DPS%u", model_number);
+      this->publish_state_(this->device_model_text_sensor_, model_buf);
       break;
   }
 
