@@ -17,13 +17,17 @@ from esphome.const import (
 
 from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
+try:
+    from esphome.const import CONF_OUTPUT_POWER
+except ImportError:
+    CONF_OUTPUT_POWER = "output_power"
+
 DEPENDENCIES = ["dps"]
 
 CODEOWNERS = ["@syssi"]
 
 CONF_OUTPUT_VOLTAGE = "output_voltage"
 CONF_OUTPUT_CURRENT = "output_current"
-CONF_OUTPUT_POWER = "output_power"
 CONF_INPUT_VOLTAGE = "input_voltage"
 CONF_VOLTAGE_SETTING = "voltage_setting"
 CONF_CURRENT_SETTING = "current_setting"
