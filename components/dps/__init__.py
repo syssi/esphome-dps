@@ -39,7 +39,7 @@ CONFIG_SCHEMA = cv.All(
         }
     )
     .extend(cv.polling_component_schema("5s"))
-    .extend(modbus.modbus_device_schema(0x01))
+    .extend(modbus.modbus_device_schema(0x01)),
 )
 
 
