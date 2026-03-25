@@ -87,27 +87,27 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
  protected:
   CurrentResolution current_resolution_{DPS_CURRENT_RESOLUTION_AUTO};
 
-  binary_sensor::BinarySensor *output_binary_sensor_;
-  binary_sensor::BinarySensor *key_lock_binary_sensor_;
-  binary_sensor::BinarySensor *constant_current_mode_binary_sensor_;
+  binary_sensor::BinarySensor *output_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *key_lock_binary_sensor_{nullptr};
+  binary_sensor::BinarySensor *constant_current_mode_binary_sensor_{nullptr};
 
-  number::Number *voltage_setting_number_;
-  number::Number *current_setting_number_;
+  number::Number *voltage_setting_number_{nullptr};
+  number::Number *current_setting_number_{nullptr};
 
-  sensor::Sensor *output_voltage_sensor_;
-  sensor::Sensor *output_current_sensor_;
-  sensor::Sensor *output_power_sensor_;
-  sensor::Sensor *input_voltage_sensor_;
-  sensor::Sensor *voltage_setting_sensor_;
-  sensor::Sensor *current_setting_sensor_;
-  sensor::Sensor *backlight_brightness_sensor_;
-  sensor::Sensor *firmware_version_sensor_;
+  sensor::Sensor *output_voltage_sensor_{nullptr};
+  sensor::Sensor *output_current_sensor_{nullptr};
+  sensor::Sensor *output_power_sensor_{nullptr};
+  sensor::Sensor *input_voltage_sensor_{nullptr};
+  sensor::Sensor *voltage_setting_sensor_{nullptr};
+  sensor::Sensor *current_setting_sensor_{nullptr};
+  sensor::Sensor *backlight_brightness_sensor_{nullptr};
+  sensor::Sensor *firmware_version_sensor_{nullptr};
 
-  switch_::Switch *output_switch_;
-  switch_::Switch *key_lock_switch_;
+  switch_::Switch *output_switch_{nullptr};
+  switch_::Switch *key_lock_switch_{nullptr};
 
-  text_sensor::TextSensor *protection_status_text_sensor_;
-  text_sensor::TextSensor *device_model_text_sensor_;
+  text_sensor::TextSensor *protection_status_text_sensor_{nullptr};
+  text_sensor::TextSensor *device_model_text_sensor_{nullptr};
 
   void on_status_data_(const std::vector<uint8_t> &data);
   void on_acknowledge_data_(const std::vector<uint8_t> &data);
