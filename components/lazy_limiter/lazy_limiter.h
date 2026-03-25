@@ -57,16 +57,16 @@ class LazyLimiter : public PollingComponent {
  protected:
   PowerDemandCalculation power_demand_calculation_{POWER_DEMAND_CALCULATION_DUMB_OEM_BEHAVIOR};
 
-  number::Number *manual_power_demand_number_;
-  number::Number *max_power_demand_number_;
+  number::Number *manual_power_demand_number_{nullptr};
+  number::Number *max_power_demand_number_{nullptr};
 
-  sensor::Sensor *power_sensor_;
-  sensor::Sensor *power_demand_sensor_;
+  sensor::Sensor *power_sensor_{nullptr};
+  sensor::Sensor *power_demand_sensor_{nullptr};
 
-  switch_::Switch *manual_mode_switch_;
-  switch_::Switch *emergency_power_off_switch_;
+  switch_::Switch *manual_mode_switch_{nullptr};
+  switch_::Switch *emergency_power_off_switch_{nullptr};
 
-  text_sensor::TextSensor *operation_mode_text_sensor_;
+  text_sensor::TextSensor *operation_mode_text_sensor_{nullptr};
 
   int16_t buffer_;
   int16_t min_power_demand_;
