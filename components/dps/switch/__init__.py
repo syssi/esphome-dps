@@ -26,10 +26,10 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
         cv.Optional(CONF_OUTPUT): switch.switch_schema(
             DpsSwitch, icon=ICON_OUTPUT, entity_category=ENTITY_CATEGORY_CONFIG
-        ).extend(cv.COMPONENT_SCHEMA),
+        ),
         cv.Optional(CONF_KEY_LOCK): switch.switch_schema(
             DpsSwitch, icon=ICON_KEY_LOCK, entity_category=ENTITY_CATEGORY_CONFIG
-        ).extend(cv.COMPONENT_SCHEMA),
+        ),
     }
 )
 
