@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import binary_sensor
 import esphome.config_validation as cv
-from esphome.const import CONF_OUTPUT
+from esphome.const import CONF_OUTPUT, ENTITY_CATEGORY_DIAGNOSTIC
 
 from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
@@ -23,10 +23,10 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
     {
         cv.Optional(CONF_OUTPUT): binary_sensor.binary_sensor_schema(icon="mdi:power"),
         cv.Optional(CONF_KEY_LOCK): binary_sensor.binary_sensor_schema(
-            icon="mdi:play-box-lock-outline"
+            icon="mdi:play-box-lock-outline", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
         cv.Optional(CONF_CONSTANT_CURRENT_MODE): binary_sensor.binary_sensor_schema(
-            icon="mdi:current-dc"
+            icon="mdi:current-dc", entity_category=ENTITY_CATEGORY_DIAGNOSTIC
         ),
     }
 )

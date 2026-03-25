@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import switch
 import esphome.config_validation as cv
-from esphome.const import CONF_RESTORE_MODE
+from esphome.const import CONF_RESTORE_MODE, ENTITY_CATEGORY_CONFIG
 
 from .. import CONF_LAZY_LIMITER_ID, LAZY_LIMITER_COMPONENT_SCHEMA, lazy_limiter_ns
 
@@ -37,6 +37,7 @@ CONFIG_SCHEMA = LAZY_LIMITER_COMPONENT_SCHEMA.extend(
         cv.Optional(CONF_MANUAL_MODE): switch.switch_schema(
             LazyLimiterSwitch,
             icon=ICON_MANUAL_MODE,
+            entity_category=ENTITY_CATEGORY_CONFIG,
         )
         .extend(
             {
