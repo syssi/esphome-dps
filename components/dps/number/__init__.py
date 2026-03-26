@@ -8,7 +8,6 @@ from esphome.const import (
     CONF_STEP,
     CONF_UNIT_OF_MEASUREMENT,
     ENTITY_CATEGORY_CONFIG,
-    ICON_EMPTY,
     UNIT_AMPERE,
     UNIT_VOLT,
 )
@@ -34,7 +33,7 @@ DpsNumber = dps_ns.class_("DpsNumber", number.Number, cg.Component)
 DPSNUMBER_SCHEMA = (
     number.number_schema(
         DpsNumber,
-        icon=ICON_EMPTY,
+        icon=None,
         entity_category=ENTITY_CATEGORY_CONFIG,
         unit_of_measurement=UNIT_VOLT,
     )

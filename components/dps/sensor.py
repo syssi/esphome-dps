@@ -3,10 +3,8 @@ from esphome.components import sensor
 import esphome.config_validation as cv
 from esphome.const import (
     DEVICE_CLASS_CURRENT,
-    DEVICE_CLASS_EMPTY,
     DEVICE_CLASS_POWER,
     DEVICE_CLASS_VOLTAGE,
-    ICON_EMPTY,
     STATE_CLASS_MEASUREMENT,
     UNIT_AMPERE,
     UNIT_EMPTY,
@@ -90,14 +88,14 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
             unit_of_measurement=UNIT_PERCENT,
             icon=ICON_BACKLIGHT_BRIGHTNESS,
             accuracy_decimals=0,
-            device_class=DEVICE_CLASS_EMPTY,
+            device_class=None,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
         cv.Optional(CONF_FIRMWARE_VERSION): sensor.sensor_schema(
             unit_of_measurement=UNIT_EMPTY,
-            icon=ICON_EMPTY,
+            icon=None,
             accuracy_decimals=1,
-            device_class=DEVICE_CLASS_EMPTY,
+            device_class=None,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
     }

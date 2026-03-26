@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 from esphome.components import text_sensor
 import esphome.config_validation as cv
-from esphome.const import ICON_EMPTY
+
 
 from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
@@ -25,7 +25,7 @@ CONFIG_SCHEMA = DPS_COMPONENT_SCHEMA.extend(
             text_sensor.TextSensor, icon=ICON_PROTECTION_STATUS
         ),
         cv.Optional(CONF_DEVICE_MODEL): text_sensor.text_sensor_schema(
-            text_sensor.TextSensor, icon=ICON_EMPTY
+            text_sensor.TextSensor, icon=None
         ),
     }
 )
