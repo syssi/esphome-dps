@@ -11,6 +11,7 @@ from esphome.const import (
 from . import CONF_LAZY_LIMITER_ID, LAZY_LIMITER_COMPONENT_SCHEMA
 
 DEPENDENCIES = ["lazy_limiter"]
+CODEOWNERS = ["@syssi"]
 
 CONF_POWER_DEMAND = "power_demand"
 
