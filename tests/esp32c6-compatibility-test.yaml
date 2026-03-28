@@ -6,6 +6,7 @@ substitutions:
 
 esphome:
   name: ${name}
+  friendly_name: ${name}
   comment: ${device_description}
 
 esp32:
@@ -66,16 +67,16 @@ lazy_limiter:
 binary_sensor:
   - platform: dps
     output:
-      name: "${name} output"
+      name: "output"
     key_lock:
-      name: "${name} key lock"
+      name: "key lock"
     constant_current_mode:
-      name: "${name} constant current mode"
+      name: "constant current mode"
 
 sensor:
   - platform: template
     id: powermeter
-    name: "${name} smartmeter instantaneous power example"
+    name: "smartmeter instantaneous power example"
     lambda: |-
       return 100.0;
     update_interval: 5s
@@ -90,21 +91,21 @@ sensor:
 
   - platform: dps
     output_voltage:
-      name: "${name} output voltage"
+      name: "output voltage"
     output_current:
-      name: "${name} output current"
+      name: "output current"
     output_power:
-      name: "${name} output power"
+      name: "output power"
     input_voltage:
-      name: "${name} input voltage"
+      name: "input voltage"
     voltage_setting:
-      name: "${name} voltage setting"
+      name: "voltage setting"
     current_setting:
-      name: "${name} current setting"
+      name: "current setting"
     backlight_brightness:
-      name: "${name} backlight brightness"
+      name: "backlight brightness"
     firmware_version:
-      name: "${name} firmware version"
+      name: "firmware version"
 
 text_sensor:
   - platform: lazy_limiter
@@ -113,9 +114,9 @@ text_sensor:
 
   - platform: dps
     protection_status:
-      name: "${name} protection status"
+      name: "protection status"
     device_model:
-      name: "${name} device model"
+      name: "device model"
 
 switch:
   - platform: lazy_limiter
@@ -128,9 +129,9 @@ switch:
 
   - platform: dps
     output:
-      name: "${name} output"
+      name: "output"
     key_lock:
-      name: "${name} key lock"
+      name: "key lock"
 
 number:
   - platform: lazy_limiter
