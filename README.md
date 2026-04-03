@@ -6,7 +6,7 @@
 ![GitHub watchers](https://img.shields.io/github/watchers/syssi/esphome-dps)
 [!["Buy Me A Coffee"](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/syssi)
 
-ESPHome component to monitor and control the RDTech Digital Control Power Supply (DPS) series via UART-TTL.  
+ESPHome component to monitor and control the RDTech Digital Control Power Supply (DPS) series via UART-TTL.
 
 ![Lovelace entities card](lovelace-entities-card.png "Lovelace entities card")
 
