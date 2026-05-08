@@ -5,8 +5,7 @@
 #include "esphome/components/number/number.h"
 #include "esphome/core/preferences.h"
 
-namespace esphome {
-namespace lazy_limiter {
+namespace esphome::lazy_limiter {
 
 class LazyLimiter;
 
@@ -31,5 +30,4 @@ class LazyLimiterNumber : public number::Number, public Component {
   ESPPreferenceObject pref_;
 };
 
-}  // namespace lazy_limiter
-}  // namespace esphome
+}  // namespace esphome::lazy_limiter

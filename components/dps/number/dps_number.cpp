@@ -1,8 +1,7 @@
 #include "dps_number.h"
 #include "esphome/core/log.h"
 
-namespace esphome {
-namespace dps {
+namespace esphome::dps {
 
 static const char *const TAG = "dps.number";
 
@@ -17,5 +16,4 @@ void DpsNumber::control(float value) {
   this->parent_->write_register(this->holding_register_, (uint16_t) (value * resolution));
 }
 
-}  // namespace dps
-}  // namespace esphome
+}  // namespace esphome::dps
