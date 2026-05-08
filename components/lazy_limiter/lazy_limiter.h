@@ -7,8 +7,7 @@
 #include "esphome/components/text_sensor/text_sensor.h"
 #include "esphome/core/hal.h"
 
-namespace esphome {
-namespace lazy_limiter {
+namespace esphome::lazy_limiter {
 
 enum PowerDemandCalculation {
   POWER_DEMAND_CALCULATION_DUMB_OEM_BEHAVIOR,
@@ -87,5 +86,4 @@ class LazyLimiter : public PollingComponent {
   int16_t calculate_power_demand_oem_(int16_t consumption);
 };
 
-}  // namespace lazy_limiter
-}  // namespace esphome
+}  // namespace esphome::lazy_limiter

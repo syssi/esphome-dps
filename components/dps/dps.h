@@ -8,8 +8,7 @@
 #include "esphome/components/text_sensor/text_sensor.h"
 #include "esphome/components/modbus/modbus.h"
 
-namespace esphome {
-namespace dps {
+namespace esphome::dps {
 
 enum CurrentResolution {
   DPS_CURRENT_RESOLUTION_AUTO,
@@ -118,5 +117,4 @@ class Dps : public PollingComponent, public modbus::ModbusDevice {
   void publish_state_(text_sensor::TextSensor *text_sensor, const std::string &state);
 };
 
-}  // namespace dps
-}  // namespace esphome
+}  // namespace esphome::dps

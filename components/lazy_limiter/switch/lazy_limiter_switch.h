@@ -4,8 +4,7 @@
 #include "esphome/core/component.h"
 #include "esphome/components/switch/switch.h"
 
-namespace esphome {
-namespace lazy_limiter {
+namespace esphome::lazy_limiter {
 
 enum LazyLimiterSwitchRestoreMode {
   LAZY_LIMITER_SWITCH_RESTORE_DEFAULT_OFF,
@@ -30,5 +29,4 @@ class LazyLimiterSwitch : public switch_::Switch, public Component {
   LazyLimiterSwitchRestoreMode restore_mode_{LAZY_LIMITER_SWITCH_RESTORE_DEFAULT_OFF};
 };
 
-}  // namespace lazy_limiter
-}  // namespace esphome
+}  // namespace esphome::lazy_limiter

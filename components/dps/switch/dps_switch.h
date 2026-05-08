@@ -4,8 +4,7 @@
 #include "esphome/core/component.h"
 #include "esphome/components/switch/switch.h"
 
-namespace esphome {
-namespace dps {
+namespace esphome::dps {
 
 class Dps;
 
@@ -23,5 +22,4 @@ class DpsSwitch : public switch_::Switch, public Component {
   uint16_t holding_register_;
 };
 
-}  // namespace dps
-}  // namespace esphome
+}  // namespace esphome::dps

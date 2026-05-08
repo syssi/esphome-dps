@@ -2,8 +2,7 @@
 #include "esphome/core/log.h"
 #include "esphome/core/application.h"
 
-namespace esphome {
-namespace lazy_limiter {
+namespace esphome::lazy_limiter {
 
 static const char *const TAG = "lazy_limiter.switch";
 
@@ -54,5 +53,4 @@ void LazyLimiterSwitch::dump_config() {
 }
 void LazyLimiterSwitch::write_state(bool state) { this->publish_state(state); }
 
-}  // namespace lazy_limiter
-}  // namespace esphome
+}  // namespace esphome::lazy_limiter
