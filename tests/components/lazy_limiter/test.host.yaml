@@ -1,0 +1,10 @@
+sensor:
+  - platform: template
+    id: power_sensor
+    lambda: |-
+      return 0.0;
+    update_interval: 60s
+
+lazy_limiter:
+  - id: test_lazy_limiter
+    power_id: power_sensor
