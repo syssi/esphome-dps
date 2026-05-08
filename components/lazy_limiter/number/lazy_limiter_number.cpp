@@ -1,8 +1,7 @@
 #include "lazy_limiter_number.h"
 #include "esphome/core/log.h"
 
-namespace esphome {
-namespace lazy_limiter {
+namespace esphome::lazy_limiter {
 
 static const char *const TAG = "lazy_limiter.number";
 
@@ -40,5 +39,4 @@ void LazyLimiterNumber::control(float value) {
 }
 void LazyLimiterNumber::dump_config() { LOG_NUMBER("", "LazyLimiter Number", this); }
 
-}  // namespace lazy_limiter
-}  // namespace esphome
+}  // namespace esphome::lazy_limiter

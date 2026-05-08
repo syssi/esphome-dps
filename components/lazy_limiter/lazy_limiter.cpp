@@ -1,8 +1,7 @@
 #include "lazy_limiter.h"
 #include "esphome/core/log.h"
 
-namespace esphome {
-namespace lazy_limiter {
+namespace esphome::lazy_limiter {
 
 static const char *const TAG = "lazy_limiter";
 
@@ -153,5 +152,4 @@ void LazyLimiter::publish_state_(text_sensor::TextSensor *text_sensor, const std
   text_sensor->publish_state(state);
 }
 
-}  // namespace lazy_limiter
-}  // namespace esphome
+}  // namespace esphome::lazy_limiter

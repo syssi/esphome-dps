@@ -2,8 +2,7 @@
 #include "esphome/core/log.h"
 #include "esphome/core/helpers.h"
 
-namespace esphome {
-namespace dps {
+namespace esphome::dps {
 
 static const char *const TAG = "dps";
 
@@ -249,5 +248,4 @@ void Dps::dump_config() {  // NOLINT(google-readability-function-size,readabilit
   LOG_TEXT_SENSOR("", "Device Model", this->device_model_text_sensor_);
 }
 
-}  // namespace dps
-}  // namespace esphome
+}  // namespace esphome::dps
