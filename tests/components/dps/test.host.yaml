@@ -1,0 +1,11 @@
+uart:
+  - id: uart_bus
+    baud_rate: 9600
+
+modbus:
+  - id: modbus0
+    uart_id: uart_bus
+
+dps:
+  - id: test_dps
+    modbus_id: modbus0
