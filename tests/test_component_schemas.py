@@ -13,7 +13,7 @@ from components.dps import (  # noqa: E402
     switch,  # noqa: E402
     text_sensor,
 )
-from components.lazy_limiter import sensor as lazy_limiter_sensor  # noqa: E402
+import components.lazy_limiter.sensor as lazy_limiter_sensor  # noqa: E402
 
 
 class TestHubConstants:

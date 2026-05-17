@@ -27,7 +27,10 @@ SENSOR_DEFS = {
 
 # pylint: disable=too-many-function-args
 CONFIG_SCHEMA = LAZY_LIMITER_COMPONENT_SCHEMA.extend(
-    {cv.Optional(key): sensor.sensor_schema(**kwargs) for key, kwargs in SENSOR_DEFS.items()}
+    {
+        cv.Optional(key): sensor.sensor_schema(**kwargs)
+        for key, kwargs in SENSOR_DEFS.items()
+    }
 )
 
 
