@@ -13,6 +13,7 @@ from components.dps import (  # noqa: E402
     switch,  # noqa: E402
     text_sensor,
 )
+import components.lazy_limiter.sensor as lazy_limiter_sensor  # noqa: E402
 
 
 class TestHubConstants:
@@ -21,6 +22,17 @@ class TestHubConstants:
 
     def test_conf_current_resolution_defined(self):
         assert hub.CONF_CURRENT_RESOLUTION == "current_resolution"
+
+
+class TestLazyLimiterSensorDefs:
+    def test_sensor_defs_completeness(self):
+        assert lazy_limiter_sensor.CONF_POWER_DEMAND in lazy_limiter_sensor.SENSOR_DEFS
+        assert len(lazy_limiter_sensor.SENSOR_DEFS) == 1
+
+    def test_sensor_defs_keys_match_schema(self):
+        assert set(lazy_limiter_sensor.SENSOR_DEFS.keys()) == {
+            lazy_limiter_sensor.CONF_POWER_DEMAND
+        }
 
 
 class TestSensorDefs:
