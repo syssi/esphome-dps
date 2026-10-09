@@ -2,9 +2,14 @@
 #include "esphome/core/log.h"
 #include "esphome/core/helpers.h"
 
+// Fallback for ESPHome < 2026.10.0
+#ifndef ESPHOME_LOG_TAG
+#define ESPHOME_LOG_TAG(name, tag) static const char *const name = tag
+#endif
+
 namespace esphome::dps {
 
-static const char *const TAG = "dps";
+ESPHOME_LOG_TAG(TAG, "dps");
 
 static const uint8_t FUNCTION_READ_REGISTERS = 0x03;
 static const uint8_t FUNCTION_WRITE_SINGLE_REGISTER = 0x06;

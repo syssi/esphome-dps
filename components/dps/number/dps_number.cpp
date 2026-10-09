@@ -1,9 +1,14 @@
 #include "dps_number.h"
 #include "esphome/core/log.h"
 
+// Fallback for ESPHome < 2026.10.0
+#ifndef ESPHOME_LOG_TAG
+#define ESPHOME_LOG_TAG(name, tag) static const char *const name = tag
+#endif
+
 namespace esphome::dps {
 
-static const char *const TAG = "dps.number";
+ESPHOME_LOG_TAG(TAG, "dps.number");
 
 void DpsNumber::dump_config() { LOG_NUMBER("", "DPS Number", this); }
 void DpsNumber::control(float value) {

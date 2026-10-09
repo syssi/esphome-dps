@@ -1,9 +1,14 @@
 #include "lazy_limiter.h"
 #include "esphome/core/log.h"
 
+// Fallback for ESPHome < 2026.10.0
+#ifndef ESPHOME_LOG_TAG
+#define ESPHOME_LOG_TAG(name, tag) static const char *const name = tag
+#endif
+
 namespace esphome::lazy_limiter {
 
-static const char *const TAG = "lazy_limiter";
+ESPHOME_LOG_TAG(TAG, "lazy_limiter");
 
 void LazyLimiter::setup() {
   this->power_sensor_->add_on_state_callback([this](float state) {
