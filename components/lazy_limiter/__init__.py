@@ -4,6 +4,7 @@ import esphome.config_validation as cv
 from esphome.const import CONF_ID
 
 CODEOWNERS = ["@syssi"]
+DOMAIN = "lazy_limiter"
 
 AUTO_LOAD = ["number", "sensor", "switch", "text_sensor"]
 MULTI_CONF = True
