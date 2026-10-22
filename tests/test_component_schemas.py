@@ -1,9 +1,9 @@
 """Schema structure tests for dps ESPHome component modules."""
 
-import os
+from pathlib import Path
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import components.dps as hub  # noqa: E402
 from components.dps import (  # noqa: E402
