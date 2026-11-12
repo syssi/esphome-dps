@@ -16,6 +16,7 @@ from esphome.const import (
 )
 
 from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
+from .const import CONF_CURRENT_SETTING, CONF_VOLTAGE_SETTING
 
 try:
     from esphome.const import CONF_OUTPUT_POWER
@@ -29,8 +30,6 @@ CODEOWNERS = ["@syssi"]
 CONF_OUTPUT_VOLTAGE = "output_voltage"
 CONF_OUTPUT_CURRENT = "output_current"
 CONF_INPUT_VOLTAGE = "input_voltage"
-CONF_VOLTAGE_SETTING = "voltage_setting"
-CONF_CURRENT_SETTING = "current_setting"
 CONF_BACKLIGHT_BRIGHTNESS = "backlight_brightness"
 CONF_FIRMWARE_VERSION = "firmware_version"
 

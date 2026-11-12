@@ -14,6 +14,7 @@ from esphome.const import (
 )
 
 from .. import CONF_DPS_ID, DPS_COMPONENT_SCHEMA, dps_ns
+from ..const import CONF_CURRENT_SETTING, CONF_VOLTAGE_SETTING
 
 DEPENDENCIES = ["dps"]
 
@@ -21,8 +22,6 @@ CODEOWNERS = ["@syssi"]
 
 DEFAULT_STEP = 1
 
-CONF_VOLTAGE_SETTING = "voltage_setting"
-CONF_CURRENT_SETTING = "current_setting"
 
 NUMBERS = {
     CONF_VOLTAGE_SETTING: 0x0000,
