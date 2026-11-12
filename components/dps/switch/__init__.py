@@ -4,13 +4,13 @@ import esphome.config_validation as cv
 from esphome.const import CONF_OUTPUT, ENTITY_CATEGORY_CONFIG
 
 from .. import CONF_DPS_ID, DPS_COMPONENT_SCHEMA, dps_ns
+from ..const import CONF_KEY_LOCK
 
 DEPENDENCIES = ["dps"]
 
 CODEOWNERS = ["@syssi"]
 
 # CONF_OUTPUT from const
-CONF_KEY_LOCK = "key_lock"
 
 ICON_OUTPUT = "mdi:power"
 ICON_KEY_LOCK = "mdi:play-box-lock-outline"
