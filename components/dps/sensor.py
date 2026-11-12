@@ -19,7 +19,7 @@ from . import CONF_DPS_ID, DPS_COMPONENT_SCHEMA
 
 try:
     from esphome.const import CONF_OUTPUT_POWER
-except ImportError:
+except ImportError:  # ESPHome < 2026.3.0
     CONF_OUTPUT_POWER = "output_power"
 
 DEPENDENCIES = ["dps"]
