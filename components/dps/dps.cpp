@@ -254,6 +254,9 @@ void Dps::dump_config() {  // NOLINT(google-readability-function-size,readabilit
   LOG_SENSOR("", "Firmware Version", this->firmware_version_sensor_);
   LOG_TEXT_SENSOR("", "Protection Status", this->protection_status_text_sensor_);
   LOG_TEXT_SENSOR("", "Device Model", this->device_model_text_sensor_);
+
+  LOG_SWITCH("", "Output", this->output_switch_);
+  LOG_SWITCH("", "Key lock", this->key_lock_switch_);
 }
 
 }  // namespace esphome::dps
